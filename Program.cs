@@ -12,17 +12,17 @@ namespace Ex_0_TsN
         static void Main(string[] args)
         {
             string str=String.Empty;
-            StreamWriter sw = new StreamWriter("file1.txt");
+            StreamWriter sw = new StreamWriter("file1");
             string str1 = Convert.ToString(Console.ReadLine());
             sw.WriteLine(str1);
             sw.Close();
-            StreamReader sr = new StreamReader("file1.txt");
+            StreamReader sr = new StreamReader("file1");
             str = sr.ReadToEnd();
-            Regex reg = new Regex(@"[0-9]{2}\.[0-9]{2}\.[0-9]{4}");
+            Regex reg = new Regex(@"(0[1-9]|[12][0-9]|3[01])[- /.](0[1-9]|1[012])[- /.](19|20)\d\d");
             Match match = reg.Match(str);
             sr.Close();
             Console.WriteLine("\n");
-            StreamWriter f1 = new StreamWriter("file2.txt");
+            StreamWriter f1 = new StreamWriter("file2");
             while (match.Success)
             {
                 Console.WriteLine(match.Value);
@@ -31,7 +31,7 @@ namespace Ex_0_TsN
             }
             f1.Close();
             Console.WriteLine("\n");
-            StreamReader f2 = new StreamReader("file2.txt");
+            StreamReader f2 = new StreamReader("file2");
             Console.WriteLine(f2.ReadToEnd());
             f2.Close();
             Console.ReadKey();
